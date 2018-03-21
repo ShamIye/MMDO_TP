@@ -4,7 +4,8 @@ import { NavController } from 'ionic-angular';
 export interface Result {
   title: string;
   author: string;
-  image: string;
+  //date: string;
+  //image: string;
 }
 
 const fakeResults: Result[] =[
@@ -16,10 +17,10 @@ const fakeResults: Result[] =[
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage{
+  results: Result[];
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(){
+    this.results = fakeResults;
   }
-
 }
