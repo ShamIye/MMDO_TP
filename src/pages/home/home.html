@@ -4,6 +4,12 @@
       Ionic Blank
     </ion-title>
   </ion-navbar>
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="getItems($event)"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
@@ -20,7 +26,7 @@
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
           <p>{{item.author}}</p>
-          <button ion-button clear item-end>View</button>
+          <button ion-button clear item-end [navPush]="pushPage" [navParams]="item">Details</button>
         </ion-item>
 
   </ion-list>
