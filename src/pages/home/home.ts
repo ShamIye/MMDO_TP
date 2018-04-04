@@ -12,7 +12,7 @@ const fakeResults: Result[] =[
   {title: 'dnfkjnd1', author: ''},
   {title: 'dnfkjnd2', author: ''}
 ];
-
+//Pourquoi ca ne marche pas
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
