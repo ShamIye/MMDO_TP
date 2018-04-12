@@ -18,7 +18,7 @@
             <img [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
-          <p>{{item.release_date | date}}</p>
+          <p>{{item.release_date | date: 'dd/MM/yyyy'}}</p>
           <p>{{item.overview}}</p>
           <p>Titre original : {{item.original_title}} ({{item.original_language}})</p>
           <p>Code TMDB : {{item.id}}</p>

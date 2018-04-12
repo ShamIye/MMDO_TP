@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-//import { NavController } from 'ionic-angular';
 import { DetailsPage } from '../details/details';
 import { api_key } from '../../app/tmdb';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-//import { HttpParams } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
+import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+
 
 export interface Result {
   title: string;
@@ -25,7 +25,7 @@ export class HomePage{
   results: Observable<Result[]>;
   pushPage: typeof DetailsPage;
 
-  constructor(private http: HttpClient){
+  constructor(public navCtrl: NavController, private http: HttpClient, public alertCtrl: AlertController){
     this.pushPage = DetailsPage;
     this.results = Observable.of([]);
   }
@@ -49,15 +49,39 @@ export class HomePage{
     }).pluck('results');
   }
 
-  discoverMovies(search: string): Observable<Result[]> {
+  private discoverMovies(search: string): Observable<Result[]> {
     let url: string = 'https://developers.themoviedb.org/3/discover/movie-discover'
     return this.http.get<Result[]>(url, {
       params: {
         api_key: api_key,
-        query: search,
+        //query: search,
         language: 'fr',
         primary_release_year: '2018'
       }
     }).pluck('results');
+  }
+
+  private showRandomMovieAlert(movies:Result[]): void {
+    var item = movies[Math.floor(Math.random() * movies.length)];
+    let confirm = this.alertCtrl.create({
+      title: item.title,
+      message: item.overview,
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+
+          }
+        },
+        {
+          text: 'Details',
+          handler: () => {
+            this.navCtrl.push(this.pushPage, item);
+          }
+        }
+      ]
+    });
+    confirm.present();
+    return ;
   }
 }

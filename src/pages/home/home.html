@@ -19,7 +19,7 @@
             <img [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
-          <p>{{item.release_date | date}}</p>
+          <p>{{item.release_date | date: 'dd/MM/yyyy'}}</p>
           <button ion-button clear item-end [navPush]="pushPage" [navParams]="item">Détails</button>
         </ion-item>
 </ion-list>
