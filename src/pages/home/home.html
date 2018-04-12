@@ -15,9 +15,14 @@
 <ion-content padding>
   <ion-list>
         <ion-item *ngFor="let item of (results | async)">
-          <ion-thumbnail *ngIf = "item.poster_path" item-start>
+          <ion-thumbnail *ngIf = "item.poster_path; else elseBlock" item-start>
             <img [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
           </ion-thumbnail>
+          <ng-template #elseBlock>
+                    <ion-thumbnail item-start>
+                      <img src='https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/11880512_929939130419296_4742120412934412702_n.jpg?_nc_cat=0&oh=e99918ed01061f30ca1380db3b9f3978&oe=5B69D597'>
+                    </ion-thumbnail>
+          </ng-template>
           <h2>{{item.title}}</h2>
           <p>{{item.release_date | date: 'dd/MM/yyyy'}}</p>
           <button ion-button clear item-end [navPush]="pushPage" [navParams]="item">Détails</button>
