@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>details</ion-title>
+    <ion-title>Details</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,7 +18,7 @@
             <img [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
-          <p>{{item.release_date}}</p>
+          <p>{{item.release_date | date}}</p>
           <p>{{item.original_title}}</p>
           <p>{{item.original_language}}</p>
           <p>{{item.adult}}</p>

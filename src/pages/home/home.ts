@@ -5,6 +5,7 @@ import { api_key } from '../../app/tmdb';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 //import { HttpParams } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 export interface Result {
   title: string;
