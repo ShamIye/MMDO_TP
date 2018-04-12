@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Result } from '../home/home';
-import { DatePipe } from '@angular/common';
+
 
 /**
  * Generated class for the DetailsPage page.

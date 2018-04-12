@@ -30,11 +30,10 @@ export class HomePage{
   pushPage: any;
   private shakeSubscription: Subscription;
   constructor(public navCtrl: NavController, private http: HttpClient, public alertCtrl: AlertController, public platform: Platform, private shake: Shake){
-    this.pushPage = DetailsPage;
     this.results = Observable.of([]);
+    this.pushPage = DetailsPage;
   }
   getItems(ev: any) {
-    //set val to teh vamlue of the searchbar
     let val = ev.target.value;
     if(val)
       this.results = this.fetchResults(val);
@@ -73,15 +72,11 @@ export class HomePage{
       buttons: [
         {
           text: 'Cancel',
-          handler: () => {
-
-          }
+          handler: () => { }
         },
         {
           text: 'Details',
-          handler: () => {
-            this.navCtrl.push(this.pushPage, item);
-          }
+          handler: () => { this.navCtrl.push(this.pushPage, item); }
         }
       ]
     });
