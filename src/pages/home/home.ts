@@ -53,11 +53,10 @@ export class HomePage{
   }
 
   private discoverMovies(): Observable<Result[]> {
-    let url: string = 'https://developers.themoviedb.org/3/discover/movie-discover'
+    let url: string = 'https://api.themoviedb.org/3/discover/movie'
     return this.http.get<Result[]>(url, {
       params: {
         api_key: api_key,
-        //query: search,
         language: 'fr',
         primary_release_year: '2018'
       }

@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-          <ion-thumbnail item-start>
+          <ion-thumbnail *ngIf = "item.poster_path" item-start>
             <img [src]="'https://image.tmdb.org/t/p/w500'+item.poster_path">
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
