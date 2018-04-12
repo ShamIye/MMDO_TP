@@ -5,6 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Shake } from '@ionic-native/shake';
+import { Subscription } from 'rxjs/Subscription';
+import { Platform } from 'ionic-angular';
 
 
 export interface Result {
@@ -23,9 +26,10 @@ export interface Result {
 })
 export class HomePage{
   results: Observable<Result[]>;
-  pushPage: typeof DetailsPage;
-
-  constructor(public navCtrl: NavController, private http: HttpClient, public alertCtrl: AlertController){
+  //pushPage: typeof DetailsPage;
+  pushPage: any;
+  private shakeSubscription: Subscription;
+  constructor(public navCtrl: NavController, private http: HttpClient, public alertCtrl: AlertController, public platform: Platform, private shake: Shake){
     this.pushPage = DetailsPage;
     this.results = Observable.of([]);
   }
@@ -49,7 +53,7 @@ export class HomePage{
     }).pluck('results');
   }
 
-  private discoverMovies(search: string): Observable<Result[]> {
+  private discoverMovies(): Observable<Result[]> {
     let url: string = 'https://developers.themoviedb.org/3/discover/movie-discover'
     return this.http.get<Result[]>(url, {
       params: {
@@ -83,5 +87,16 @@ export class HomePage{
     });
     confirm.present();
     return ;
+  }
+
+  ionViewDidEnter() {
+    this.shakeSubscription = Observable.fromPromise(this.platform.ready())
+      .switchMap(() => this.shake.startWatch())
+      .switchMap(() => this.discoverMovies())
+      .subscribe(movies => this.showRandomMovieAlert(movies));
+  }
+
+  ionViewWillLeave() {
+    this.shakeSubscription.unsubscribe();
   }
 }
