@@ -19,8 +19,7 @@
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
           <p>{{item.release_date | date}}</p>
-          <p>{{item.original_title}}</p>
-          <p>{{item.original_language}}</p>
-          <p>{{item.adult}}</p>
-          <p>{{item.id}}</p>
+          <p>{{item.overview}}</p>
+          <p>Titre original : {{item.original_title}} ({{item.original_language}})</p>
+          <p>Code TMDB : {{item.id}}</p>
 </ion-content>

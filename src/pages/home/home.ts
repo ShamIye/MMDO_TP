@@ -10,8 +10,8 @@ import { DatePipe } from '@angular/common';
 export interface Result {
   title: string;
   poster_path: string;
+  overview: string;
   release_date: string;
-  adult: boolean;
   original_title: string;
   original_language: string;
   id: number;
