@@ -48,4 +48,16 @@ export class HomePage{
       }
     }).pluck('results');
   }
+
+  discoverMovies(search: string): Observable<Result[]> {
+    let url: string = 'https://developers.themoviedb.org/3/discover/movie-discover'
+    return this.http.get<Result[]>(url, {
+      params: {
+        api_key: api_key,
+        query: search,
+        language: 'fr',
+        primary_release_year: '2018'
+      }
+    }).pluck('results');
+  }
 }
