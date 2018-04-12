@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      The TMDB Explorer
     </ion-title>
   </ion-navbar>
     <ion-searchbar
@@ -13,11 +13,6 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-
   <ion-list>
         <ion-item *ngFor="let item of (results | async)">
           <ion-thumbnail item-start>
@@ -25,7 +20,7 @@
           </ion-thumbnail>
           <h2>{{item.title}}</h2>
           <p>{{item.release_date | date}}</p>
-          <button ion-button clear item-end [navPush]="pushPage" [navParams]="item">Details</button>
+          <button ion-button clear item-end [navPush]="pushPage" [navParams]="item">Détails</button>
         </ion-item>
 </ion-list>
 
